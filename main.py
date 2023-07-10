@@ -63,7 +63,7 @@ def main(*_):
     Brick((SCREEN_WIDTH+50, (SCREEN_HEIGHT-20)/16*3+10), (200, (SCREEN_HEIGHT-20)/8*3), brick_group, (0, 0, 0), 3)
     Brick((SCREEN_WIDTH+50, (SCREEN_HEIGHT-20)/16*13+10), (200, (SCREEN_HEIGHT-20)/8*3), brick_group, (0, 0, 0), 2)
 
-    ball = Ball((960, 750), brick_group, player_group)
+    ball = Ball((SCREEN_WIDTH/4, SCREEN_HEIGHT/2), brick_group, player_group)
     ball_group = pygame.sprite.GroupSingle(ball)
     start_time = time.perf_counter()
 

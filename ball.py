@@ -93,8 +93,11 @@ class Ball(pygame.sprite.Sprite):
         if self.rect.bottom > SCREEN_HEIGHT - 60:
             self.rect.bottom = -self.rect.bottom + 2 * (SCREEN_HEIGHT - 60)
             self.vector.y *= -1
-        if self.rect.right < 0 or self.rect.left > SCREEN_WIDTH:
-            self.pos = pygame.math.Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+        if self.rect.right < 0:
+            self.pos = pygame.math.Vector2(SCREEN_WIDTH / 4 * 3, SCREEN_HEIGHT / 2)
+            self.vector = pygame.math.Vector2(0, 0)
+        if self.rect.left > SCREEN_WIDTH:
+            self.pos = pygame.math.Vector2(SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2)
             self.vector = pygame.math.Vector2(0, 0)
 
         self.brick_collide()

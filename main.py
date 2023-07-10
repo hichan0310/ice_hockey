@@ -53,17 +53,18 @@ def main(*_):
     player_group = pygame.sprite.Group()
     brick_group = pygame.sprite.Group()
 
-
     player1 = Player(camera1, player_group)
-    player2=Player(camera2, player_group)
-    Brick((SCREEN_WIDTH/2, -40), (SCREEN_WIDTH, 200), brick_group, (0, 0, 0), 4)
-    Brick((SCREEN_WIDTH/2, SCREEN_HEIGHT+40), (SCREEN_WIDTH, 200), brick_group, (0, 0, 0), 1)
-    Brick((-50, (SCREEN_HEIGHT-20)/16*3+10), (200, (SCREEN_HEIGHT-20)/8*3), brick_group, (0, 0, 0), 4)
-    Brick((-50, (SCREEN_HEIGHT-20)/16*13+10), (200, (SCREEN_HEIGHT-20)/8*3), brick_group, (0, 0, 0), 1)
-    Brick((SCREEN_WIDTH+50, (SCREEN_HEIGHT-20)/16*3+10), (200, (SCREEN_HEIGHT-20)/8*3), brick_group, (0, 0, 0), 3)
-    Brick((SCREEN_WIDTH+50, (SCREEN_HEIGHT-20)/16*13+10), (200, (SCREEN_HEIGHT-20)/8*3), brick_group, (0, 0, 0), 2)
+    player2 = Player(camera2, player_group)
+    Brick((SCREEN_WIDTH / 2, -40), (SCREEN_WIDTH, 200), brick_group, (0, 0, 0), 4)
+    Brick((SCREEN_WIDTH / 2, SCREEN_HEIGHT + 40), (SCREEN_WIDTH, 200), brick_group, (0, 0, 0), 1)
+    Brick((-50, (SCREEN_HEIGHT - 20) / 16 * 3 + 10), (200, (SCREEN_HEIGHT - 20) / 8 * 3), brick_group, (0, 0, 0), 4)
+    Brick((-50, (SCREEN_HEIGHT - 20) / 16 * 13 + 10), (200, (SCREEN_HEIGHT - 20) / 8 * 3), brick_group, (0, 0, 0), 1)
+    Brick((SCREEN_WIDTH + 50, (SCREEN_HEIGHT - 20) / 16 * 3 + 10), (200, (SCREEN_HEIGHT - 20) / 8 * 3), brick_group,
+          (0, 0, 0), 3)
+    Brick((SCREEN_WIDTH + 50, (SCREEN_HEIGHT - 20) / 16 * 13 + 10), (200, (SCREEN_HEIGHT - 20) / 8 * 3), brick_group,
+          (0, 0, 0), 2)
 
-    ball = Ball((SCREEN_WIDTH/4, SCREEN_HEIGHT/2), brick_group, player_group)
+    ball = Ball((SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2), brick_group, player_group)
     ball_group = pygame.sprite.GroupSingle(ball)
     start_time = time.perf_counter()
 

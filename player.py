@@ -20,12 +20,14 @@ class Player(pygame.sprite.Sprite):
     def update(self):
         try:
             self.x, self.y = self.camera.get_pos()
-        except:pass
+        except:
+            pass
         self.locationhistory.pop()
-        self.locationhistory=[(self.x, self.y)]+self.locationhistory
-        self.rect.x = self.x-PLAYER_RADIUS
-        self.rect.y = self.y-PLAYER_RADIUS
-        self.v=((self.locationhistory[0][0]-self.locationhistory[5][0])/5, (self.locationhistory[0][1]-self.locationhistory[5][1])/5)
+        self.locationhistory = [(self.x, self.y)] + self.locationhistory
+        self.rect.x = self.x - PLAYER_RADIUS
+        self.rect.y = self.y - PLAYER_RADIUS
+        self.v = ((self.locationhistory[0][0] - self.locationhistory[5][0]) / 5,
+                  (self.locationhistory[0][1] - self.locationhistory[5][1]) / 5)
         # dx = pygame.mouse.get_pos()[0] - self.rect.centerx
         # dx = min(self.max_speed, max(-self.max_speed, dx))
         # self.rect.x += dx

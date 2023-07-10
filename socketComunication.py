@@ -1,5 +1,6 @@
 import socket
 
+
 def main():
     listen_ip = '127.0.0.1'
     listen_port = 12345
@@ -18,17 +19,18 @@ def main():
         text = File.read().split(',')
         File.close()
         with open('test.txt', 'w') as File:
-            newdata=data.decode().split(',')
+            newdata = data.decode().split(',')
             print(text)
-            result=""
+            result = ""
             for i in range(4):
-                result+=(text[i] if newdata[i]=='N' else newdata[i])+','
+                result += (text[i] if newdata[i] == 'N' else newdata[i]) + ','
             File.write(result)
         if data.decode() == "exit":
             break
 
     # 소켓 닫기
     sock.close()
+
 
 if __name__ == '__main__':
     main()

@@ -45,12 +45,13 @@ class Ball(pygame.sprite.Sprite):
             ball_speed = self.vector
             a = player_location - ball_location
             b = player_speed - ball_speed
-            if a.x**2+a.y**2 < (BALL_RADIUS + PLAYER_RADIUS) ** 2 and a.x * b.x + a.y * b.y < 0:
+            if a.x ** 2 + a.y ** 2 < (BALL_RADIUS + PLAYER_RADIUS) ** 2 and a.x * b.x + a.y * b.y < 0:
                 try:
                     theta1 = atan((player_location.y - ball_location.y) / (player_location.x - ball_location.x))
                 except:
                     try:
-                        theta1 = pi / 2 * abs(player_location.y - ball_location.y) / (player_location.y - ball_location.y)
+                        theta1 = pi / 2 * abs(player_location.y - ball_location.y) / (
+                                    player_location.y - ball_location.y)
                     except:
                         theta1 = 0
                 try:

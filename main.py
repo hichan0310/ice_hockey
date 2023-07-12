@@ -11,6 +11,7 @@ from player import Player
 from camera import Camera
 from settings import *
 import multiprocessing as mp
+import settings
 
 # mp.freeze_support()
 # mp.Process(name="update", target=update_pos).start()
@@ -63,17 +64,19 @@ def main(*_):
           (0, 0, 0), 3)
     Brick((SCREEN_WIDTH + 50, (SCREEN_HEIGHT - 20) / 16 * 13 + 10), (200, (SCREEN_HEIGHT - 20) / 8 * 3), brick_group,
           (0, 0, 0), 2)
+    #Brick((SCREEN_WIDTH/2, SCREEN_HEIGHT/2), (5, SCREEN_HEIGHT*2/3), brick_group, (10, 10, 10), 1)
 
     ball = Ball((SCREEN_WIDTH / 4, SCREEN_HEIGHT / 2), brick_group, player_group)
     ball_group = pygame.sprite.GroupSingle(ball)
     start_time = time.perf_counter()
-
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return end,
             if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                return end,
+                settings.a,settings.b = 0,0
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_BACKSPACE:
+                ball.reset()
         screen.fill((255, 238, 229))
         time_count -= 1
         if time_count == 0:
@@ -84,16 +87,16 @@ def main(*_):
                 return game_over, time.perf_counter() - start_time, len(brick_group.sprites())
             if len(brick_group.sprites()) == 0:
                 return game_over, time.perf_counter() - start_time
-            time_text = f"{time.perf_counter() - start_time:.2f}"
-            # draw_text(time_text, center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 21), color=(0, 0, 0), size=52)
+            time_text = f"{settings.a} : {settings.b}"
+            draw_text(time_text, center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 15+10), color=(0, 0, 0), size=52)
         player_group.update()
         # hanbyeol = pygame.image.load("img.png").convert_alpha()
         # hanbyeol_rect = hanbyeol.get_rect(midtop=player.rect.midbottom)
         # screen.blit(hanbyeol, hanbyeol_rect)
+        pygame.draw.line(start_pos=(SCREEN_WIDTH//2, SCREEN_HEIGHT/5), end_pos=(SCREEN_WIDTH//2, SCREEN_HEIGHT*4/5), color=(10, 10, 10), width=5, surface=screen)
         ball_group.draw(screen)
         brick_group.draw(screen)
         player_group.draw(screen)
-
         if time_count > 0:
             pass  # draw_text(f"{time_count // 60 + 1}", size=480, color=(55, 55, 55))
         pygame.display.update()

@@ -15,3 +15,5 @@ PLAYER_SIZE = (PLAYER_RADIUS * 2,) * 2
 PLAYER_MASS = 5
 
 FPS = 60
+
+a, b = 0, 0

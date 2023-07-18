@@ -83,7 +83,7 @@ class Ball(pygame.sprite.Sprite):
 
     def update(self):
         self.pos += self.vector
-        if sqrt(self.vector.x ** 2 + self.vector.y ** 2) > 5:
+        if sqrt(self.vector.x ** 2 + self.vector.y ** 2) > 10:
             gasokdo = 0.1
             self.vector -= pygame.math.Vector2(gasokdo * self.vector.x / sqrt(self.vector.x ** 2 + self.vector.y ** 2),
                                                gasokdo * self.vector.y / sqrt(self.vector.x ** 2 + self.vector.y ** 2))

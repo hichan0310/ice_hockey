@@ -2,7 +2,7 @@ import socket
 
 
 def main():
-    listen_ip = '127.0.0.1'
+    listen_ip = '172.16.13.88'
     listen_port = 12345
 
     # UDP 소켓 생성 및 바인딩

@@ -58,11 +58,11 @@ def main(*_):
     player2 = Player(camera2, player_group)
     Brick((SCREEN_WIDTH / 2, -40), (SCREEN_WIDTH, 200), brick_group, (0, 0, 0), 4)
     Brick((SCREEN_WIDTH / 2, SCREEN_HEIGHT + 40), (SCREEN_WIDTH, 200), brick_group, (0, 0, 0), 1)
-    Brick((-50, (SCREEN_HEIGHT - 20) / 16 * 3 + 10), (200, (SCREEN_HEIGHT - 20) / 8 * 3), brick_group, (0, 0, 0), 4)
-    Brick((-50, (SCREEN_HEIGHT - 20) / 16 * 13 + 10), (200, (SCREEN_HEIGHT - 20) / 8 * 3), brick_group, (0, 0, 0), 1)
-    Brick((SCREEN_WIDTH + 50, (SCREEN_HEIGHT - 20) / 16 * 3 + 10), (200, (SCREEN_HEIGHT - 20) / 8 * 3), brick_group,
+    Brick((-50, (SCREEN_HEIGHT - 20) / 16 * 3 + 10-20), (200, (SCREEN_HEIGHT - 20) / 8 * 3), brick_group, (0, 0, 0), 4)
+    Brick((-50, (SCREEN_HEIGHT - 20) / 16 * 13 + 10+20), (200, (SCREEN_HEIGHT - 20) / 8 * 3), brick_group, (0, 0, 0), 1)
+    Brick((SCREEN_WIDTH + 50, (SCREEN_HEIGHT - 20) / 16 * 3 + 10-20), (200, (SCREEN_HEIGHT - 20) / 8 * 3), brick_group,
           (0, 0, 0), 3)
-    Brick((SCREEN_WIDTH + 50, (SCREEN_HEIGHT - 20) / 16 * 13 + 10), (200, (SCREEN_HEIGHT - 20) / 8 * 3), brick_group,
+    Brick((SCREEN_WIDTH + 50, (SCREEN_HEIGHT - 20) / 16 * 13 + 10+20), (200, (SCREEN_HEIGHT - 20) / 8 * 3), brick_group,
           (0, 0, 0), 2)
     #Brick((SCREEN_WIDTH/2, SCREEN_HEIGHT/2), (5, SCREEN_HEIGHT*2/3), brick_group, (10, 10, 10), 1)
 
@@ -75,8 +75,23 @@ def main(*_):
                 return end,
             if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 settings.a,settings.b = 0,0
+                ball.reset()
             if event.type == pygame.KEYDOWN and event.key == pygame.K_BACKSPACE:
                 ball.reset()
+        if settings.a==5:
+            ball_group.draw(screen)
+            brick_group.draw(screen)
+            player_group.draw(screen)
+            pygame.display.update()
+            draw_text("win", center=(SCREEN_WIDTH/4, SCREEN_HEIGHT/2), size=100, color="#000000")
+            continue
+        if settings.b==5:
+            ball_group.draw(screen)
+            brick_group.draw(screen)
+            player_group.draw(screen)
+            pygame.display.update()
+            draw_text("win", center=(SCREEN_WIDTH/4*3, SCREEN_HEIGHT/2), size=100, color="#000000")
+            continue
         screen.fill((255, 238, 229))
         time_count -= 1
         if time_count == 0:
